@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationAdd">
+		<xpath>*/AlienRace.ThingDef_AlienRace[defName="Alien_Moyo"]/alienRace/thoughtSettings</xpath>
+		<value>
+			<replacerList>
+				<li>
+					<original>AteMoyo_Cucumber</original>
+					<replacer>AteRawFood</replacer> 
+				</li>
+			</replacerList>
+		</value>
+	</Operation>
+</Patch>

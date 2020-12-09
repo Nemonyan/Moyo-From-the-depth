@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<ThingDef ParentName="MoteBase">
+		<defName>Mote_HF</defName>
+		<graphicData>
+			<shaderType>TransparentPostLight</shaderType>
+			<texPath>Things/Moyoplant/Mote_HF</texPath>
+			<color>(1, 1, 1, 0.5)</color>
+		</graphicData>
+		<altitudeLayer>MoteOverhead</altitudeLayer>
+		<mote>
+			<fadeInTime>0.50</fadeInTime>
+			<solidTime>4</solidTime>
+			<fadeOutTime>.6</fadeOutTime>
+			<growthRate>0.01</growthRate>
+		</mote>
+	</ThingDef>
+
+	<ThingDef ParentName="BuildingBase">
+		<defName>Moyo_Hydrofarm</defName>
+		<label>artifical hydroculture</label>
+		<description>등대의 식재료를 기르기 위한 양식장입니다.</description>
+		<thingClass>Building_PlantGrower</thingClass>
+		<graphicData>
+			<texPath>Things/Moyoplant/MoyoHF</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(6,6)</drawSize>
+			<shadowData>
+				<volume>(6.03,1.0,5.25)</volume>
+				<offset>(0,0,-0.25)</offset>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0,5.4,6)</rect>
+			</damageData>
+		</graphicData>
+		<castEdgeShadows>true</castEdgeShadows>
+		<altitudeLayer>LowPlant</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>30</pathCost>
+		<constructEffect>ConstructMetal</constructEffect>
+		<fillPercent>0.30</fillPercent>
+		<canOverlapZones>false</canOverlapZones>
+		<constructionSkillPrerequisite>6</constructionSkillPrerequisite>
+		<statBases>
+			<WorkToBuild>12000</WorkToBuild>
+			<MaxHitPoints>500</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Cleanliness>-3</Cleanliness>
+		</statBases>
+		<size>(6,6)</size>
+		<costList>
+			<Moyo_Abyssteel>100</Moyo_Abyssteel>
+			<ComponentIndustrial>5</ComponentIndustrial>
+		</costList>
+		<fertility>1</fertility>
+		<building>
+			<defaultPlantToGrow>Moyo_Cucumber</defaultPlantToGrow>
+			<sowTag>MoyoWater</sowTag>
+			<buildingTags>
+				<li>Production</li>
+			</buildingTags>
+		</building>
+		<tickerType>Normal</tickerType>
+		<comps>
+			<li Class="CompProperties_Forbiddable"/>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>400</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Refuelable">
+				<fuelConsumptionRate>1.5</fuelConsumptionRate>
+				<fuelCapacity>20.0</fuelCapacity>
+				<fuelFilter>
+					<thingDefs>
+						<li>Moyo_DBSF</li>
+					</thingDefs>
+				</fuelFilter>
+				<initialFuelPercent>0</initialFuelPercent>
+				<minimumFueledThreshold>0.1</minimumFueledThreshold>
+				<showAllowAutoRefuelToggle>true</showAllowAutoRefuelToggle>
+			</li>			
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(80,80,217,0)</glowColor>
+			</li>			
+			<li Class="OLB.CompProperties_Decorate">
+				<moteDecorations>
+					<li>
+						<moteDef>Mote_HF</moteDef>
+						<whenFueledAndPowered>true</whenFueledAndPowered>
+						<buildingCentered>true</buildingCentered>
+						<rotationRate>0~0</rotationRate>
+						<scale>6</scale>
+						<graceTime>80</graceTime>
+					</li>
+				</moteDecorations>
+			</li>				
+		</comps>
+		<researchPrerequisites>
+			<li>Hydroponics</li>
+		</researchPrerequisites>
+		<terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+		<designationCategory>Production</designationCategory>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantBase">
+		<defName>Moyo_Cucumber</defName>
+		<label>depth cucumber</label>
+		<description>등대에서 값싼 식재료로 사용되는 해삼입니다. 맛은 매우 특이한 것으로 알려져있습니다.</description>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-1</Beauty>
+			<Nutrition>0.35</Nutrition>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Moyoplant/MoyoCucumber2</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<neverMultiSelect>false</neverMultiSelect>
+		<pathCost>14</pathCost>
+		<ingestible/>
+		<plant>
+			<growMinGlow>0</growMinGlow>
+			<growOptimalGlow>0.5</growOptimalGlow>
+			<fertilityMin>0.01</fertilityMin>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<growDays>3.5</growDays>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestYield>8</harvestYield>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>Moyo_CucumberItem</harvestedThingDef>
+			<neverBlightable>true</neverBlightable>
+			<visualSizeRange>0.4~1</visualSizeRange>
+			<topWindExposure>0</topWindExposure>
+			<wildClusterRadius>0</wildClusterRadius>
+			<wildClusterWeight>0</wildClusterWeight>
+			<purpose>Food</purpose>
+			<sowTags inherit="false">
+				<li>MoyoWater</li>
+			</sowTags>		
+		</plant>
+	</ThingDef>
+	<ThingDef ParentName="PlantBase">
+		<defName>Moyo_Seaweed</defName>
+		<label>black kelp</label>
+		<description>등대에서 값싼 식재료로 사용되는 해초입니다. 심해의 환경에서도 자랄 수 있는 능력을 가졌으며, 독특한 향을 가지고 있습니다.</description>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Beauty>-1</Beauty>
+			<Nutrition>0.35</Nutrition>
+			<Flammability>0</Flammability>
+		</statBases>
+		<graphicData>
+			<texPath>Things/Moyoplant/MoyoSeaweed2</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<neverMultiSelect>false</neverMultiSelect>
+		<pathCost>14</pathCost>
+		<ingestible />
+		<plant>
+			<growMinGlow>0</growMinGlow>
+			<growOptimalGlow>0.5</growOptimalGlow>
+			<fertilityMin>0.01</fertilityMin>
+			<fertilitySensitivity>1</fertilitySensitivity>
+			<growDays>6</growDays>
+			<dieIfLeafless>true</dieIfLeafless>
+			<harvestYield>20</harvestYield>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>Moyo_SeaweedItem</harvestedThingDef>
+			<neverBlightable>true</neverBlightable>
+			<visualSizeRange>0.4~1</visualSizeRange>
+			<topWindExposure>0</topWindExposure>
+			<wildClusterRadius>0</wildClusterRadius>
+			<wildClusterWeight>0</wildClusterWeight>
+			<purpose>Food</purpose>
+			<sowTags inherit="false">
+				<li>MoyoWater</li>
+			</sowTags>			
+		</plant>
+	</ThingDef>
+
+	<ThingDef ParentName="PlantFoodRawBase">
+		<defName>Moyo_CucumberItem</defName>
+		<label>depth cucumber</label>
+		<description>등대에서 값싼 식재료로 사용되는 해삼입니다. 맛은 매우 특이한 것으로 알려져있습니다.</description>
+		<graphicData>
+			<texPath>Things/Moyoplant/MoyoCucumber1</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.6</MarketValue>
+		</statBases>
+		<ingestible>
+			<foodType>Processed</foodType>
+			<tasteThought>AteMoyo_Cucumber</tasteThought>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>3</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+		<thingCategories inherit="false">
+			<li>MeatRaw</li>
+		</thingCategories>
+	</ThingDef>
+
+	<ThoughtDef>
+		<defName>AteMoyo_Cucumber</defName>
+		<showBubble>true</showBubble>
+		<icon>Things/Mote/ThoughtSymbol/Food</icon>
+		<durationDays>1</durationDays>
+		<stages>
+			<li>
+				<label>기괴한 것을 생으로 먹음</label>
+				<description>기괴한걸 생으로 씹어먹어야 했어. 매우 비리고 식감도 끔찍해, 살기 위해서라지만 우엑...</description>
+				<baseMoodEffect>-15</baseMoodEffect>
+			</li>
+		</stages>
+	</ThoughtDef>	
+
+
+	<ThingDef ParentName="PlantFoodRawBase">
+		<defName>Moyo_SeaweedItem</defName>
+		<label>black kelp</label>
+		<description>등대에서 값싼 식재료로 사용되는 해초입니다. 심해의 환경에서도 자랄 수 있는 능력을 가졌으며, 독특한 향을 가지고 있습니다.</description>
+		<graphicData>
+			<texPath>Things/Moyoplant/MoyoSeaweed1</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>0.8</MarketValue>
+		</statBases>
+		<ingestible>
+			<foodType>VegetableOrFruit</foodType>
+		</ingestible>
+		<comps>
+			<li Class="CompProperties_Rottable">
+				<daysToRotStart>15</daysToRotStart>
+				<rotDestroys>true</rotDestroys>
+			</li>
+		</comps>
+	</ThingDef>  
+</Defs>
