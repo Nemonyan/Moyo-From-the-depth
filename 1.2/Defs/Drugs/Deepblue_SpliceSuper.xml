@@ -97,6 +97,7 @@
 			<li>Drugs</li>
 		</thingCategories>
 		<alwaysHaulable>true</alwaysHaulable>
+		<tradeability>Sellable</tradeability>
 		<comps>
 			<li Class="CompProperties_Forbiddable" />
 		</comps>
